@@ -48,7 +48,8 @@ return array(
 		'lib/assets/images',
 		'provider/assets/javascripts',
 		'provider/assets/stylesheets',
-		'provider/assets/images'
+		'provider/assets/images',
+    'bower_components'
 	),
 
 	/*

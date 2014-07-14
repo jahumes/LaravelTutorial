@@ -10,5 +10,6 @@
 //
 // The available directives right now are require, require_directory, and require_tree
 //
-//= require jquery
+//= require jquery/dist/jquery.min
+//= require bootstrap-sass-official/assets/javascripts/bootstrap
 //= require_tree .
