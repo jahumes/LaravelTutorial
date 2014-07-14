@@ -1,0 +1,17 @@
+{
+  "name": "laravel-tutorial",
+  "version": "0.0.0",
+  "authors": [
+    "Anthony Humes <jah.humes@gmail.com>"
+  ],
+  "description": "A tutorial for Laravel based on the great tutorial Rails Tutorial by Michael Hartl",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
