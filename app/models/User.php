@@ -5,11 +5,28 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends \LaravelBook\Ardent\Ardent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
-	/**
+  /**
+   * The rules for the validation of the user
+   *
+   * @var array
+   */
+  public static $rules = array(
+    'name'                  => 'required|between:4,16',
+    'email'                 => 'required|email'
+  );
+
+  /**
+   *  The varaibles that are available in mass assignment
+   *
+   * @var array
+   */
+  protected $fillable = array('name', 'email');
+
+  /**
 	 * The database table used by the model.
 	 *
 	 * @var string
