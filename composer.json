@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"codesleeve/asset-pipeline": "dev-master",
-		"laravelbook/ardent": "2.*"
+		"laravelbook/ardent": "2.*",
+    "patricktalmadge/bootstrapper": "dev-develop"
 	},
 	"autoload": {
 		"classmap": [
@@ -37,6 +38,7 @@
 	"minimum-stability": "stable",
 	"require-dev": {
 		"way/generators": "dev-master",
-		"phpunit/phpunit": "4.1.*"
+		"phpunit/phpunit": "4.1.*",
+    "fzaninotto/faker": "1.5.*@dev"
 	}
 }
