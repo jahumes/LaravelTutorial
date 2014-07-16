@@ -8,11 +8,12 @@
     </head>
     <body>
         <div class="container" role="main">
-            <div class="jumbotron">
-                <h1>@section('page_title')
-                    Welcome to
-                    @show</h1>
-            </div>
+            <h1>@yield('page_title')</h1>
+            <?php $messages =  $errors->all('<p style="color:red">:message</p>') ?>
+            <?php foreach ($messages as $msg): ?>
+                <?= $msg ?>
+            <?php endforeach; ?>
+
             @yield('content')
         </div>
     </body>
