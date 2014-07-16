@@ -14,6 +14,16 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
   public $autoPurgeRedundantAttributes = true;
 
+  public function beforeSave() {
+    // if there's a new password, hash it
+    if($this->isDirty('password')) {
+      $this->password = Hash::make($this->password);
+    }
+
+    return true;
+    //or don't return nothing, since only a boolean false will halt the operation
+  }
+
   /**
    * The rules for the validation of the user
    *
