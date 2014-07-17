@@ -30,11 +30,11 @@ class User extends Ardent implements UserInterface, RemindableInterface {
    * @var array
    */
   public static $rules = array(
-      'email'       => 'required|email|unique:users',
-      'password'    => 'required|alpha_num|between:8,32|confirmed',
-      'password_confirmation' => 'required|alpha_num|between:8,32',
-      'first_name'  => 'required',
-      'last_name'   => 'required'
+    'email'       => 'required|email|unique:users',
+    'password'    => 'required|between:8,32|confirmed',
+    'password_confirmation' => 'required|between:8,32',
+    'first_name'  => 'required',
+    'last_name'   => 'required'
   );
 
   /**
@@ -45,17 +45,31 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   protected $fillable = array('first_name','last_name','password', 'password_confirmation', 'email');
 
   /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
+   * The database table used by the model.
+   *
+   * @var string
+   */
+  protected $table = 'users';
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = array('password', 'remember_token');
+  /**
+   * The attributes excluded from the model's JSON form.
+   *
+   * @var array
+   */
+  protected $hidden = array('password', 'remember_token');
+
+  /**
+   * Displays the full name of the user
+   *
+   * @param bool $reversed Should the name be reversed
+   * @return string The name
+   */
+  public function full_name( $reversed = false )
+  {
+    if($reversed)
+      return $this->last_name . ', ' . $this->first_name;
+    else
+      return $this->first_name . ' ' . $this->last_name;
+  }
 
 }

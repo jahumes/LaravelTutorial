@@ -35,6 +35,18 @@ class UsersController extends \BaseController {
 		//
 	}
 
+  /**
+   * Display the specified resource.
+   * GET /users/{id}
+   *
+   * @param  int  $id
+   * @return Response
+   */
+  public function show($id)
+  {
+    //
+  }
+
 	/**
 	 * Display the specified resource.
 	 * GET /users/{id}

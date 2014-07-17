@@ -22,8 +22,8 @@ Route::post('register','AuthController@registerUser');
 Route::get('login','AuthController@login');
 Route::post('login','AuthController@loginUser');
 
-Route::group('users', function() {
-  Route::get('profile', 'UsersController@show');
+Route::group(['before' => 'auth'], function() {
+  Route::controller('account', 'AccountController');
 });
 
 
