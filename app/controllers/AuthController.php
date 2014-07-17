@@ -10,7 +10,15 @@ class AuthController extends \BaseController
    */
   public function register()
   {
-    return View::make('auth.register');
+    if(Auth::check())
+    {
+      Alert::info('You are already logged in!')->flash();
+      return Redirect::to('account/profile');
+    }
+    else
+    {
+      return View::make('auth.register');
+    }
   }
 
   /**
@@ -26,7 +34,7 @@ class AuthController extends \BaseController
     if($user->save())
     {
       Auth::loginUsingId($user->id);
-      return Redirect::to('users/profile')->with('message','Thanks for register!');
+      return Redirect::to('account/profile')->with('message','Thanks for register!');
     }
     else
     {

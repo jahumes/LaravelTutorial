@@ -8,7 +8,11 @@
 		"codesleeve/asset-pipeline": "dev-master",
 		"laravelbook/ardent": "2.*",
     "patricktalmadge/bootstrapper": "dev-develop",
-    "hampel/alerts": "~1.0"
+    "hampel/alerts": "~1.0",
+    "zizaco/confide": "3.2.x",
+    "zizaco/entrust": "dev-master",
+    "anahkiasen/former": "dev-master"
+
 	},
 	"autoload": {
 		"classmap": [

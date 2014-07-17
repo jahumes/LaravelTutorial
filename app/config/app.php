@@ -126,7 +126,10 @@ return array(
     'Way\Generators\GeneratorsServiceProvider',
     'Bootstrapper\BootstrapperServiceProvider',
     'Hampel\Alerts\AlertServiceProvider',
-    'Clockwork\Support\Laravel\ClockworkServiceProvider'
+    'Clockwork\Support\Laravel\ClockworkServiceProvider',
+    'Former\FormerServiceProvider',
+    'Zizaco\Confide\ConfideServiceProvider',
+    'Zizaco\Entrust\EntrustServiceProvider',
 	),
 
 	/*
@@ -194,6 +197,9 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
+    'Confide'    => 'Zizaco\Confide\ConfideFacade',
+    'Entrust'    => 'Zizaco\Entrust\EntrustFacade',
+
     'Alert'           => 'Hampel\Alerts\Facades\Alert',
 
     'BootstrapAlert' => 'Bootstrapper\\Alert',
@@ -205,7 +211,7 @@ return array(
     'ButtonToolbar'  => 'Bootstrapper\\ButtonToolbar',
     'Carousel'       => 'Bootstrapper\\Carousel',
     'DropdownButton' => 'Bootstrapper\\DropdownButton',
-    'Form'           => 'Bootstrapper\\Form',
+    //'Form'           => 'Bootstrapper\\Form',
     'Helpers'        => 'Bootstrapper\\Helpers',
     'Icon'           => 'Bootstrapper\\Icon',
     'Image'          => 'Bootstrapper\\Image',
@@ -223,7 +229,7 @@ return array(
     'Typography'     => 'Bootstrapper\\Typography',
 
     'Clockwork' => 'Clockwork\Support\Laravel\Facade',
-
+    'Former' => 'Former\Facades\Former',
 	),
 
 );

@@ -24,12 +24,12 @@ class AccountController extends \BaseController {
     }
     if($user->updateUniques())
     {
-      Alert::success('Profile was updated!');
+      Alert::success('Profile was updated!')->flash();
       return Redirect::to('account/profile');
     }
     else
     {
-      return Redirect::to('account/profile')->withInput();
+      return Redirect::to('account/profile')->withErrors($user->errors());
     }
   }
 
