@@ -15,21 +15,15 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
-Route::get('register','UsersController@register');
+Route::get('register','AuthController@register');
 
-Route::post('register','UsersController@registerUser');
+Route::post('register','AuthController@registerUser');
 
-Route::get('login','UsersController@login');
-Route::post('login','UsersController@loginUser');
+Route::get('login','AuthController@login');
+Route::post('login','AuthController@loginUser');
 
-Route::get('profile', function()
-{
-  if (Auth::check())
-  {
-    return 'Welcome! You have been authorized!';
-  }
-  else
-  {
-    return 'Please <a href="login">Login</a>';
-  }
+Route::group('users', function() {
+  Route::get('profile', 'UsersController@show');
 });
+
+
