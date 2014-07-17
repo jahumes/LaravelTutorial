@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
 		"codesleeve/asset-pipeline": "dev-master",
 		"laravelbook/ardent": "2.*",
-    "patricktalmadge/bootstrapper": "dev-develop"
+    "patricktalmadge/bootstrapper": "dev-develop",
+    "hampel/alerts": "~1.0"
 	},
 	"autoload": {
 		"classmap": [

@@ -10,7 +10,7 @@ class AuthController extends \BaseController
    */
   public function register()
   {
-    return View::make('users.register');
+    return View::make('auth.register');
   }
 
   /**
@@ -42,7 +42,15 @@ class AuthController extends \BaseController
    */
   public function login()
   {
-    return View::make('users.login');
+    if(Auth::check())
+    {
+      Alert::info('You are already logged in!')->flash();
+      return Redirect::to('account/profile');
+    }
+    else
+    {
+      return View::make('auth.login');
+    }
   }
 
   /**
@@ -60,10 +68,10 @@ class AuthController extends \BaseController
 
     if (Auth::attempt($user))
     {
-
-      return Redirect::to('users/profile');
+      Alert::success('Successfully logged in!')->flash();
+      return Redirect::to('account/profile');
     }
-    die();
-    return Redirect::to('login')->withError(array('login_error'=>'Your username and password are invalid'));
+    Alert::error('The login doesn\'t work')->flash();
+    return Redirect::to('login');
   }
 }

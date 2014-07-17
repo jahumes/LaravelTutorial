@@ -9,10 +9,7 @@
     <body>
         <div class="container" role="main">
             <h1>@yield('page_title')</h1>
-            <?php $messages =  $errors->all() ?>
-            <?php foreach ($messages as $msg): ?>
-                <?= Alert::error($msg); ?>
-            <?php endforeach; ?>
+            @include('alerts::alerts')
 
             @yield('content')
         </div>
