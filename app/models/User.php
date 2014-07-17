@@ -1,14 +1,8 @@
 <?php
 
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use \LaravelBook\Ardent\Ardent;
+use Zizaco\Confide\ConfideUser;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
-
-	use UserTrait, RemindableTrait;
+class User extends ConfideUser {
 
   public $autoHydrateEntityFromInput = true;
 
@@ -25,6 +19,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
    */
   public static $rules = array(
     'email'       => 'required|email|unique:users',
+    'username' => 'required|alpha_dash|unique:users',
     'password'    => 'required|between:8,32|confirmed',
     'password_confirmation' => 'required|between:8,32',
     'first_name'  => 'required',
@@ -36,7 +31,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
    *
    * @var array
    */
-  protected $fillable = array('first_name','last_name','password', 'password_confirmation', 'email');
+  protected $fillable = array('username','first_name','last_name','password', 'password_confirmation', 'email');
 
   /**
    * The database table used by the model.
@@ -60,18 +55,6 @@ class User extends Ardent implements UserInterface, RemindableInterface {
       unset($this->attributes['password_confirmation']);
     }
 
-    return true;
-  }
-
-  public function afterValidate()
-  {
-    if($errors = $this->errors())
-    {
-      foreach($errors as $message)
-      {
-        Alert::error($message)->flash();
-      }
-    }
     return true;
   }
 

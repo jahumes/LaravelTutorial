@@ -7,6 +7,7 @@
 @section('content')
   {{ Former::populate( Input::old() ) }}
   {{ Former::horizontal_open() }}
+  {{ Former::xlarge_text('username')->require() }}
   {{ Former::xlarge_text('email')->require() }}
   {{ Former::xlarge_text('first_name')->require() }}
   {{ Former::xlarge_text('last_name')->require() }}

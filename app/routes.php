@@ -26,4 +26,7 @@ Route::group(['before' => 'auth'], function() {
   Route::controller('account', 'AccountController');
 });
 
-
+// Confide RESTful route
+Route::get('account/confirm/{code}', 'UserController@getConfirm');
+Route::get('account/reset/{token}', 'UserController@getReset');
+Route::controller( 'account', 'AccountController');
