@@ -14,15 +14,9 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 
   public $autoPurgeRedundantAttributes = true;
 
-  public function beforeSave() {
-    // if there's a new password, hash it
-    if($this->isDirty('password')) {
-      $this->password = Hash::make($this->password);
-    }
+  public static $passwordAttributes = array('password');
 
-    return true;
-    //or don't return nothing, since only a boolean false will halt the operation
-  }
+  public $autoHashPasswordAttributes = true;
 
   /**
    * The rules for the validation of the user
@@ -58,13 +52,36 @@ class User extends Ardent implements UserInterface, RemindableInterface {
    */
   protected $hidden = array('password', 'remember_token');
 
+  public function beforeValidate()
+  {
+    if($this->exists && $this->isDirty('password') && $this->password == '')
+    {
+      $this->password = $this->original['password'];
+      unset($this->attributes['password_confirmation']);
+    }
+
+    return true;
+  }
+
+  public function afterValidate()
+  {
+    if($errors = $this->errors())
+    {
+      foreach($errors as $message)
+      {
+        Alert::error($message)->flash();
+      }
+    }
+    return true;
+  }
+
   /**
    * Displays the full name of the user
    *
    * @param bool $reversed Should the name be reversed
    * @return string The name
    */
-  public function full_name( $reversed = false )
+  public function fullName( $reversed = false )
   {
     if($reversed)
       return $this->last_name . ', ' . $this->first_name;

@@ -126,7 +126,7 @@ return array(
     'Way\Generators\GeneratorsServiceProvider',
     'Bootstrapper\BootstrapperServiceProvider',
     'Hampel\Alerts\AlertServiceProvider',
-
+    'Clockwork\Support\Laravel\ClockworkServiceProvider'
 	),
 
 	/*
@@ -221,6 +221,8 @@ return array(
     'Table'          => 'Bootstrapper\\Table',
     'Thumbnail'      => 'Bootstrapper\\Thumbnail',
     'Typography'     => 'Bootstrapper\\Typography',
+
+    'Clockwork' => 'Clockwork\Support\Laravel\Facade',
 
 	),
 

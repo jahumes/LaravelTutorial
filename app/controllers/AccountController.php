@@ -17,14 +17,19 @@ class AccountController extends \BaseController {
   {
     $user = User::find(Auth::user()->id);
     $user->fill(Input::all());
-
-    if($user->save())
+    if ($user->exists)
     {
-      return Redirect::to('account/profile')->with('notify','Information updated');
+      $user::$rules['password'] = (Input::get('password')) ? 'required|between:8,32|confirmed' : '';
+      $user::$rules['password_confirmation'] = (Input::get('password')) ? 'required|between:8,32' : '';
+    }
+    if($user->updateUniques())
+    {
+      Alert::success('Profile was updated!');
+      return Redirect::to('account/profile');
     }
     else
     {
-      return Redirect::to('account/profile')->withErrors($user->errors())->withInput();
+      return Redirect::to('account/profile')->withInput();
     }
   }
 
