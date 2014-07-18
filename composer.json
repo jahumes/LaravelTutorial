@@ -45,6 +45,7 @@
 		"way/generators": "dev-master",
 		"phpunit/phpunit": "4.1.*",
     "fzaninotto/faker": "1.5.*@dev",
-    "itsgoingd/clockwork": "1.*"
+    "itsgoingd/clockwork": "1.*",
+    "mockery/mockery": "dev-master"
 	}
 }

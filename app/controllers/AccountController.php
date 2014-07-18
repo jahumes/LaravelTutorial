@@ -65,7 +65,7 @@ class AccountController extends \BaseController {
     if ( $user->getKey() )
     {
       $notice = Lang::get('confide::confide.alerts.account_created') . ' ' . Lang::get('confide::confide.alerts.instructions_sent');
-      Alert::notice($notice)->flash();
+      Alert::info($notice)->flash();
       // Redirect with success message, You may replace "Lang::get(..." for your custom message.
       return Redirect::to('account/login');
     }
