@@ -132,7 +132,7 @@ class AccountController extends \BaseController {
       {
         $err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
       }
-      elseif( $user->checkUserExists( $input ) and ! $user->isConfirmed( $input ) )
+      elseif( $user->exists( $input ) and ! $user->confirmed( $input ) )
       {
         $err_msg = Lang::get('confide::confide.alerts.not_confirmed');
       }
